@@ -1,0 +1,17 @@
+{% extends "search/base.html" %}
+{% block content %}
+    {% if movies %}
+        {% for movie in movies %}
+            <article class="media content-section">
+            <div class="media-body">
+                <div class="article-metadata">
+                <a class="mr-2" href="#">{{ movie.director }}</a>
+                <small class="text-muted">{{ movie.country }}</small>
+                </div>
+                <h2><a class="article-title" href="#">{{ movie.title }}</a></h2>
+                <p class="article-content">{{ movie.duration }}</p>
+            </div>
+            </article>
+        {% endfor %}
+    {% endif %}
+{% endblock content %}
