@@ -19,5 +19,5 @@ with open('dataset.csv', encoding='utf-8') as f:
         actors=row[11],
         description=row[12],
         imdb_url=row[13],
-        poster_url=row[14]
+        poster_url=row[14],
         recommendations=row[15])
