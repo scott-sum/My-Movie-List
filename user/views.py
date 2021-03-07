@@ -7,7 +7,6 @@ import matplotlib
 matplotlib.use('Agg')
 from matplotlib import pyplot as plt
 from io import StringIO
-import numpy as np
 import operator
 
 # Create your views here.
