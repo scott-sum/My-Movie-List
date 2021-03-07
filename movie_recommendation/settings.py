@@ -20,12 +20,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'z$$6h-%#(rq=f1%ku4ml*$3y&7a7$b0t5u6w&hmvg-b7wnt=88'
+# SECRET_KEY = 'z$$6h-%#(rq=f1%ku4ml*$3y&7a7$b0t5u6w&hmvg-b7wnt=88'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['my-django-movie-list.herokuapp.com']
 
 
 # Application definition
