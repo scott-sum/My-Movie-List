@@ -9,6 +9,9 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+
+
     <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
@@ -17,11 +20,14 @@
       crossorigin="anonymous"
     />
 
+    <link rel="stylesheet" type="text/css" href="{% static 'search/main.css' %}">
+
     <title>MyMovieList</title>
+    <link rel="shortcut icon" type="image/jpg" href="../../media/movieIcon.png"/>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="{% url 'search-home' %}">MyMovieList</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="app-name navbar-brand" href="{% url 'search-home' %}">MyMovieList</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -36,41 +42,55 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="{% url 'search-home' %}"
-              >Home <span class="sr-only">(current)</span></a
-            >
+          {% if user.is_authenticated %}
+          <li {% if request.resolver_match.url_name == 'profile' %}class="nav-item active"{% else %}class="nav-item"{% endif %}>
+            <a class="nav-link" href="{% url 'profile' %}">Profile</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Log In</a>
+          <li {% if request.resolver_match.url_name == 'my_movies' %}class="nav-item active"{% else %}class="nav-item"{% endif %}>
+            <a class="nav-link" href="{% url 'my_movies' %}">My Movies</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Sign Up</a>
+          <li {% if request.resolver_match.url_name == 'statistics' %}class="nav-item active"{% else %}class="nav-item"{% endif %}>
+            <a class="nav-link" href="{% url 'statistics' %}">Statistics</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Profile</a>
+          <li {% if request.resolver_match.url_name == 'logoug' %}class="nav-item active"{% else %}class="nav-item"{% endif %}>
+            <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
           </li>
+          {% else %}
+          <li {% if request.resolver_match.url_name == 'login' %}class="nav-item active"{% else %}class="nav-item"{% endif %}>
+            <a class="nav-link" href="{% url 'login' %}">Log In</a>
+          </li>
+          <li {% if request.resolver_match.url_name == 'register' %}class="nav-item active"{% else %}class="nav-item"{% endif %}>
+            <a class="nav-link" href="{% url 'register' %}">Sign Up</a>
+          </li>
+          {% endif %}
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input
-            class="form-control mr-sm-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-            Search Movies
+        <form
+          name="search-form"
+          class="form-inline my-2 my-lg-0 justify-content-center"
+          method="GET"
+          action="{% url 'search-results' %}"
+        >
+          <input class="nav-search-box" type="text" name="q" placeholder="Movie Title">
+          <button class="nav-search-btn btn btn-primary" type="submit">
+            <i class="fas fa-search"></i>
           </button>
         </form>
       </div>
     </nav>
-    
-  
-    <main role="main" class="container">
-      <div class="row">
+
+    <main role="main" class="container-fluid">
+      <div class="row main-content">
+        <div class="col-md-2"></div>
         <div class="col-md-8">
-          {% block content %}{% endblock %}
-        </div>        
+          {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+          {% block content %}
+          {% endblock %}
+        </div>
+        <div class="col-md-2"></div>
       </div>
     </main>
     <!-- Optional JavaScript -->
@@ -90,5 +110,6 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
+
   </body>
 </html>

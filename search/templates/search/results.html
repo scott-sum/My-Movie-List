@@ -1,17 +1,33 @@
 {% extends "search/base.html" %}
-{% block content %}
-    {% if movies %}
-        {% for movie in movies %}
-            <article class="media content-section">
-            <div class="media-body">
-                <div class="article-metadata">
-                <a class="mr-2" href="#">{{ movie.director }}</a>
-                <small class="text-muted">{{ movie.country }}</small>
-                </div>
-                <h2><a class="article-title" href="#">{{ movie.title }}</a></h2>
-                <p class="article-content">{{ movie.duration }}</p>
-            </div>
-            </article>
-        {% endfor %}
+{% block content %}    
+    <h1>Search Results for "{{ query }}"</h1>
+    <br>
+    {% for movie in object_list %}        
+        <div class="movie-result">
+          <img class="movie-result-poster" src="{{ movie.poster_url }}">            
+          <h3><a class="movie-result-title" href="{% url 'movie-detail' movie.imdb_id %}">{{ movie.title }}</a></h3>                  
+          <p class="movie-result-year-duration">{{ movie.year }}, Duration: {{ movie.duration }} minutes</p>
+          <p class="movie-result-description">{{ movie.description}}</p>
+        </div>
+    {% endfor %}    
+    {% if is_paginated %}
+      {% if page_obj.has_previous %}
+        <a class="btn btn-outline-info mb-4" href="/search/?page=1&q={{ query }}">First</a>
+        <a class="btn btn-outline-info mb-4" href="/search/?page={{ page_obj.previous_page_number }}&q={{ query }}">Previous</a>
+      {% endif %}
+
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <a class="btn btn-info mb-4" href="/search/?page={{ num }}&q={{ query }}">{{ num }}</a>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+          <a class="btn btn-outline-info mb-4" href="/search/?page={{ num }}&q={{ query }}">{{ num }}</a>
+        {% endif %}
+      {% endfor %}
+
+      {% if page_obj.has_next %}
+        <a class="btn btn-outline-info mb-4" href="/search/?page={{ page_obj.next_page_number }}&q={{ query }}">Next</a>
+        <a class="btn btn-outline-info mb-4" href="/search/?page={{ page_obj.paginator.num_pages }}&q={{ query }}">Last</a>
+      {% endif %}
+
     {% endif %}
 {% endblock content %}

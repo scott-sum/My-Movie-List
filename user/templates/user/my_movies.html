@@ -1,0 +1,14 @@
+{% extends "search/base.html" %}
+{% block content %}   
+    <h1 class="my-movies-title">My Movies</h1>
+    <br>
+    {% for savedMovie, movie in myMovies %}
+        <div class="saved-result">
+          <img class="saved-result-poster" src="{{ movie.poster_url }}">            
+          <h3><a class="saved-result-title" href="{% url 'movie-detail' movie.imdb_id %}">{{ movie.title }}</a></h3>                  
+          <p class="saved-result-year-duration">{{ movie.year }}, Duration: {{ movie.duration }} minutes</p>
+          <p class="saved-result-description">{{ movie.description}}</p>
+          <p class="saved-result-date-added">Saved on {{ savedMovie.date_added }}</p>
+        </div>
+    {% endfor %}    
+{% endblock content %}

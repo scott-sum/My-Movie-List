@@ -1,13 +1,17 @@
-{% extends "search/base.html" %} {% block content %}
-<div class="d-flex justify-content-center">
+{% extends "search/base.html" %} 
+{% block content %}
+<div class="search justify-content-center">
+  <h3 class="search-title">Search for a Movie</h3>
   <form
     name="search-form"
-    class="form-inline my-2 my-lg-0"
+    class="form-inline my-2 my-lg-0 justify-content-center"
     method="GET"
     action="{% url 'search-results' %}"
   >
-    <input type="text" name="query" placeholder="Movie Title">
-    <input type="submit" name="submit" value="Search">
+    <input class="search-box" type="text" name="q" placeholder="Movie Title">
+    <button type="submit" class="btn btn-primary">
+      <i class="fas fa-search"></i>
+    </button>
   </form>
 </div>
 {% endblock content %}

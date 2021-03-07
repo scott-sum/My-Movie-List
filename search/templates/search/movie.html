@@ -1,0 +1,44 @@
+{% extends "search/base.html" %}
+{% block content %}
+  <div class="movie-details">
+    <h1 class="movie-details-header">Movie Details</h1>
+    <br>
+    <figure class="movie-details-figure">
+      <img class="movie-details-poster" src="{{ object.poster_url }}">
+      <figcaption class="movie-details-caption">
+        <a class="movie-details-link" href="{{ object.imdb_url }}" target="_blank">More Info on IMDB</a>
+      </figcaption>
+    </figure>    
+    <h2 class="movie-details-title">{{ object.title }}</h2>
+    <p class="movie-details-info">{{ object.year }}, Duration: {{ object.duration }} minutes</p>
+    <p class="movie-details-info">{{ object.description }}</p>
+    <p class="movie-details-info">Genre(s): {{ object.genre }}</p>
+    <p class="movie-details-info">Director: {{ object.director }}</p>
+    <p class="movie-details-info">Actors: {{ object.actors }}</p>
+    <p class="movie-details-info">Production Company: {{ object.production_company }}</p>
+    <p class="movie-details-info">Country: {{ object.country }}</p>    
+    {% if user.is_authenticated %} 
+      {% if saved %}
+          <form action="{% url 'delete-saved-movie' imdb_id=object.imdb_id %}">
+              <button class="movie-btn btn btn-danger" type="submit" name="remove_button">Remove From List</button>
+          </form>            
+      {% else %}
+          <form action="{% url 'add-saved-movie' imdb_id=object.imdb_id %}">
+              <button class="movie-btn btn btn-success" type="submit" name="add_button">Add to List</button>
+          </form>
+      {% endif %}
+    {% endif %}    
+  </div>
+  
+  <div class="recommendations">
+    <h4 class="recommendations-header">Recommendations</h4>
+    {% for recommendation in recommendations %}        
+      <figure class="recommendation-figure">
+        <img class="recommendation-poster" src="{{ recommendation.poster_url }}">
+        <figcaption class="recommendation-caption">
+          <a class="recommendation-details-link" href="{% url 'movie-detail' recommendation.imdb_id %}">{{ recommendation.title }}</a>
+        </figcaption>
+      </figure>
+    {% endfor %}
+  </div>
+{% endblock content %}

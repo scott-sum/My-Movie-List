@@ -1,0 +1,189 @@
+.main-content {
+    margin-top: 1.5rem;
+}
+
+.nav-item {
+    padding-bottom: 0rem;
+    padding-top: 0.5rem
+}
+.app-name {
+    font-size: 1.5rem;
+}
+
+.search {
+  margin-top: 10rem;
+  text-align: center;
+}
+
+.search-title {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+}
+
+.search-box {
+    width: 70%;
+    font-size: 1.5rem;
+    border-radius: 7.5px;
+}
+
+.nav-search-box {
+    width: 70%;
+    font-size: 1rem;
+    border-radius: 5px;    
+}
+
+.nav-search-btn {
+    font-size: 0.6rem;
+}
+
+.profile-info {
+    margin-bottom: 6rem;
+}
+
+.account-img {
+    border-radius: 50%;
+    float: right;
+    width: 6%;
+    height: auto;
+}
+
+.movie-result {
+    padding-bottom: 3rem;
+    margin-bottom: 2rem;
+}
+
+.movie-result-title {
+    color: white;
+}
+
+.movie-result-poster {
+    width: 10%;
+    height: auto;
+    float: left;
+    margin-right: 2rem;
+}
+
+.my-movies-title {
+    margin-bottom: 1rem;
+}
+
+.saved-result {
+    padding-bottom: 2rem;
+    margin-bottom: 1rem;
+}
+
+.saved-result-title {
+    color: white;
+}
+
+.saved-result-poster {
+    width: 10%;
+    height: auto;
+    float: left;
+    margin-right: 2rem;
+}
+
+.movie-details-figure {
+    float: left;
+    display: table;
+    width: 25%;
+    margin-right: 2rem;
+}
+
+.movie-details {
+    padding-bottom: 20%;
+}
+
+.movie-details-poster {
+    width: 100%;
+    height: auto;
+}
+
+.movie-details-caption {
+    display: table-caption;
+    caption-side: bottom;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.movie-details-link {
+    color: white;
+}
+
+.movie-details-info {
+    color: white;
+}
+
+.recommendations-header {
+    text-align: center;
+}
+
+.recommendation-poster {
+    width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+.recommendation-details-link {
+    color: white;
+}
+
+.recommendation-figure {
+    float: left;
+    width: 25%;
+    height: auto;
+    padding: 2rem;
+    margin: auto;
+}
+
+.recommendation-caption {
+    text-align: center;
+}
+
+.top-movies-header {
+    text-align: center;
+}
+
+.top-movies-poster {
+    width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+.top-movies-details-link {
+    color: white;
+}
+
+.top-movies-figure {
+    float: left;
+    width: 20%;
+    height: auto;
+    padding: 2rem;
+    margin: auto;
+}
+
+.top-movies-caption {
+    text-align: center;
+}
+
+.genre-graph {
+    text-align: center;
+}
+
+.genre-graph-header {
+    margin-top: 12em;
+    margin-bottom: 2rem;
+}
+
+
+
+
+
+
+body {
+    background-image: url('../../../media/background.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    color: white;
+}

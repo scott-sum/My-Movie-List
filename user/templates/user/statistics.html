@@ -1,0 +1,20 @@
+{% extends "search/base.html" %}
+{% block content %}
+    <h1 class="stat-header">Statistics</h1>
+    <br>
+    <div class="top-movies">
+        <h3 class="top-movies-header">Top 5 Movies Saved by All Users</h3>
+        {% for movie in top_movies %}
+            <figure class="top-movies-figure">
+                <img class="top-movies-poster" src="{{ movie.poster_url }}">
+                <figcaption class="top-movies-caption">
+                    <a class="top-movies-details-link" href="{% url 'movie-detail' movie.imdb_id %}">{{ movie.title }}</a>
+                </figcaption>
+            </figure>
+        {% endfor %}
+    </div>
+    <div class="genre-graph">
+        <h3 class="genre-graph-header">Data Visualizations (more coming soon!)</h3>
+        {{ genre_graph|safe }}
+    </div>
+{% endblock content %}
