@@ -12,7 +12,7 @@ class Movie(models.Model):
     duration = models.IntegerField()
     country = models.CharField(max_length=30)
     director = models.CharField(max_length=50)
-    production_company = models.CharField(max_length=50)
+    production_company = models.CharField(max_length=100)
     actors = models.TextField()
     description = models.TextField()
     imdb_url = models.TextField()
