@@ -36,7 +36,6 @@ ebcdic==1.1.1
 EbookLib==0.17.1
 email-validator==1.1.2
 entrypoints==0.3
-extract-msg==0.23.1
 filelock==3.0.12
 gunicorn==20.0.4
 idna==2.10
