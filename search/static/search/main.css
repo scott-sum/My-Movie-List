@@ -168,11 +168,11 @@
 
 .genre-graph {
     text-align: center;
+    margin-top: 50%;
 }
 
 .genre-graph-header {
-    margin-top: 12em;
-    margin-bottom: 2rem;
+    margin-bottom: 2%;
 }
 
 body {
