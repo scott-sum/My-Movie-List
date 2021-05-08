@@ -3,7 +3,7 @@ from search.models import Movie
 import django
 django.setup()
 
-with open('dataset.csv', encoding='utf-8') as f:
+with open('datasets/final_movies.csv', encoding='utf-8') as f:
     reader = csv.reader(f)
     next(reader, None)
     for row in reader:
